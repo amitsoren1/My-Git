@@ -93,6 +93,13 @@ class GitRepository:
                 os.remove(os.path.join(os.getcwd(),self.input_repo_name,item))
         return "success"
 
+    def clone_and_push(self):
+        self.authenticate()
+        self.clone_repo()
+        self.create_new_repo()
+        self.push_to_new_repo()
+
+
 if __name__ == '__main__':
     my_parser = argparse.ArgumentParser()
     for param in GitRepository.params:
@@ -101,7 +108,4 @@ if __name__ == '__main__':
     # print(vars(args))
     obj = GitRepository(username=vars(args)['username'],password=vars(args)['password'],
             input_repo=vars(args)['input_repo'],output_repo_name=vars(args)['output_repo_name'])
-    print(obj.authenticate())
-    print(obj.clone_repo())
-    print(obj.create_new_repo())
-    print(obj.push_to_new_repo())
+    obj.clone_and_push()
