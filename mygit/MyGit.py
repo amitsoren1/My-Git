@@ -98,6 +98,7 @@ class GitRepository:
         self.clone_repo()
         self.create_new_repo()
         self.push_to_new_repo()
+        print("done clonning and creating new repo")
 
 
 if __name__ == '__main__':
